@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @aticel.name %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @aticel.content %>
+</p>
+
+<p>
+  <strong>Published on:</strong>
+  <%= @aticel.published_on %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @aticel.tags %>
+</p>
+
+<p>
+  <strong>Properties:</strong>
+  <%= @aticel.properties %>
+</p>
+
+<%= link_to 'Edit', edit_aticel_path(@aticel) %> |
+<%= link_to 'Back', aticels_path %>

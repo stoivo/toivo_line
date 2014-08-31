@@ -1,0 +1,2 @@
+module AticelsHelper
+end

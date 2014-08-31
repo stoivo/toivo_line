@@ -1,0 +1,45 @@
+<style>
+  [required] {
+    border-color: #88a;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 255, .5);
+  }
+  :invalid {
+    border-color: #e88;
+    -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
+  }
+</style>
+
+<%= form_for(@aticel) do |f| %>
+  <% if @aticel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@aticel.errors.count, "error") %> prohibited this aticel from being saved:</h2>
+
+      <ul>
+      <% @aticel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.label :published_on %><br>
+    <%= @aticel.published_on %><br>
+    <%= f.date_field :published_on %>
+  </div>
+  <div class="field">
+    <%= f.label :tags %>
+    <%= f.collection_check_boxes :tags, %w[ruby rails design] , :to_s, :to_s, %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

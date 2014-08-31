@@ -1,0 +1,33 @@
+<h1>Listing aticels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Content</th>
+      <th>Published on</th>
+      <th>Tags</th>
+      <th>Properties</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @aticels.each do |aticel| %>
+      <tr>
+        <td><%= aticel.name %></td>
+        <td><%= aticel.content %></td>
+        <td><%= aticel.published_on %></td>
+        <td><%= aticel.tags %></td>
+        <td><%= aticel.properties %></td>
+        <td><%= link_to 'Show', aticel %></td>
+        <td><%= link_to 'Edit', edit_aticel_path(aticel) %></td>
+        <td><%= link_to 'Destroy', aticel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Aticel', new_aticel_path %>
