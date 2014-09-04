@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+//= require websocket_rails/main
+//= require chat
+
+//= require twitter/bootstrap
