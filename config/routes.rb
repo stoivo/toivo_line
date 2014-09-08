@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+
   get 'admin', :to => "access#index"
 
 
+  resources :games
   resources :aticels
   resources :users
 

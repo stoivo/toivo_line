@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_by: 1
+  weight: 1
+  height: 1
+  winner: 
+  losser: 1
+  turn: 1
+  first_player: 1
+  secound_player: 1
+  first_player: 1
+  start_at: 2014-09-08
+  end_at: 2014-09-08
+  mode: MyString
+
+two:
+  start_by: 1
+  weight: 1
+  height: 1
+  winner: 
+  losser: 1
+  turn: 1
+  first_player: 1
+  secound_player: 1
+  first_player: 1
+  start_at: 2014-09-08
+  end_at: 2014-09-08
+  mode: MyString

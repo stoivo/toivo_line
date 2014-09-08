@@ -1,0 +1,47 @@
+<h1>Listing games</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start by</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>Winner</th>
+      <th>Losser</th>
+      <th>Turn</th>
+      <th>First player</th>
+      <th>Secound player</th>
+      <th>First player</th>
+      <th>Start at</th>
+      <th>End at</th>
+      <th>Mode</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.start_by %></td>
+        <td><%= game.weight %></td>
+        <td><%= game.height %></td>
+        <td><%= game.winner %></td>
+        <td><%= game.losser %></td>
+        <td><%= game.turn %></td>
+        <td><%= game.first_player %></td>
+        <td><%= game.secound_player %></td>
+        <td><%= game.first_player %></td>
+        <td><%= game.start_at %></td>
+        <td><%= game.end_at %></td>
+        <td><%= game.mode %></td>
+        <td><%= link_to 'Show', game %></td>
+        <td><%= link_to 'Edit', edit_game_path(game) %></td>
+        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game', new_game_path %>
