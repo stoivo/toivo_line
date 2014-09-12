@@ -6,13 +6,13 @@
 </p>
 
 <p>
-  <strong>Weight:</strong>
-  <%= @game.weight %>
+  <strong>columns:</strong>
+  <%= @game.columns %>
 </p>
 
 <p>
-  <strong>Height:</strong>
-  <%= @game.height %>
+  <strong>rows:</strong>
+  <%= @game.rows %>
 </p>
 
 <p>
@@ -62,3 +62,20 @@
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
+
+<style>
+  #game td{
+    border: solid black;
+    padding: 4px;
+  }
+</style>
+
+<table id="game">
+  <% 1.upto(@game.rows) do |row_int| %>
+    <tr>
+      <% 1.upto(@game.columns) do |columns_int| %>
+        <td><%= row_int %> <%= columns_int %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

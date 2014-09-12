@@ -10,12 +10,11 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// I dont thik i want this //= require_tree .
+
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
 
-//= require websocket_rails/main
-//= require chat
 
 //= require twitter/bootstrap

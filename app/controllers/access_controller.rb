@@ -3,6 +3,9 @@ class AccessController < ApplicationController
   before_action :confirm_logged_in, :except => [:login, :attempt_login, :logout]
 
   def index
+    @javascript_extrafiles << "websocket_rails/main"
+    @javascript_extrafiles << "chat"
+
     @current_user = current_user
     # display text & links
   end

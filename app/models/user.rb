@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  has_one :game
+  has_many :games
 
   has_secure_password
 

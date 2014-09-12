@@ -44,7 +44,8 @@ function show_hide_submit(){
     }
   }
 
-$(document).ready(function () {
+
+$( document ).ready(function() {
   $("#password").change(function() { checkPasswordMatch() })
   $("#confirm_password").change(function() { checkPasswordMatch() })
   $("#user_epost").change(function() { checkEpost() })

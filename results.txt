@@ -1,0 +1,18 @@
+                                       Table "public.game_plots"
+    Column     |            Type             |                        Modifiers                        
+---------------+-----------------------------+---------------------------------------------------------
+ id            | integer                     | not null default nextval('game_plots_id_seq'::regclass)
+ game_id       | integer                     | not null
+ vertical      | integer                     | 
+ horizontal    | integer                     | 
+ selected_by   | integer                     | 
+ selected_turn | integer                     | 
+ created_at    | timestamp without time zone | 
+ updated_at    | timestamp without time zone | 
+Indexes:
+    "game_plots_pkey" PRIMARY KEY, btree (id)
+
+ id | game_id | vertical | horizontal 
+----+---------+----------+------------
+(0 rows)
+

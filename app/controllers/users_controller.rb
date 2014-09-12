@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def new
+    @javascript_extrafiles << "login"
+
     @user = User.new()
   end
 
@@ -8,7 +10,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'user was successfully created.' }
+        format.html { redirect_to :controller => "access", :action => "index", notice: 'user was successfully created.' }
         format.json { render :login, status: :created, location: @user }
       else
         format.html { render :new }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909070601) do
+ActiveRecord::Schema.define(version: 20140910191124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 20140909070601) do
     t.datetime "updated_at"
   end
 
-  create_table "game_ploys", force: true do |t|
+  create_table "game_plots", force: true do |t|
     t.integer  "game_id",       null: false
-    t.integer  "column"
-    t.integer  "row"
+    t.integer  "vertical"
+    t.integer  "horizontal"
     t.integer  "selected_by"
     t.integer  "selected_turn"
     t.datetime "created_at"
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 20140909070601) do
     t.integer  "losser_id"
     t.integer  "first_player_id"
     t.integer  "secound_player_id"
-    t.integer  "turn",              default: 0
-    t.integer  "weight",                        null: false
-    t.integer  "height",                        null: false
+    t.integer  "turn",              default: 1
+    t.integer  "rows",                          null: false
+    t.integer  "columns",                       null: false
     t.string   "mode"
     t.date     "start_at"
     t.date     "end_at"

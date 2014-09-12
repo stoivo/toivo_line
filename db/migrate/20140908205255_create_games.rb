@@ -6,7 +6,7 @@ class CreateGames < ActiveRecord::Migration
       t.integer :losser_id
       t.integer :first_player_id
       t.integer :secound_player_id
-      t.integer :turn, default: 0
+      t.integer :turn, default: 1
       t.integer :weight, null: false
       t.integer :height, null: false
       t.string :mode
