@@ -11,12 +11,11 @@ class Game < ActiveRecord::Base
   # has_many :sections
   # has_and_belongs_to_many :editors, :class_name => "AdminUser"
   def create_game_plots
-    1.upto(rows) do |row|
-      1.upto(columns) do |column|
+    rows.times do |row|
+      columns.times do |column|
         GamePlot.create game_id: self.id, vertical: column, horizontal: row
       end
     end
   end
-end
 
-# Game.creat! start_by_id: u1, winner_id: u1, losser_id: u2, first_player_id: u1, secound_player_id: u2, weight: 3, height: 3
+end

@@ -5,4 +5,8 @@
 
 -- SELECT * FROM games;
 -- SELECT * FROM game_ploys WHERE game_id = 7;
-SELECT  id , game_id , vertical , horizontal FROM game_plots WHERE game_plots.game_id = 7 ORDER BY vertical asc, horizontal asc
+-- SELECT  id , game_id, selected_by_id, vertical , horizontal FROM game_plots WHERE game_id = 9 ORDER BY vertical asc, horizontal asc
+UPDATE game_plots 
+SET selected_by_id=0
+WHERE id in (51,   90, 116, 129, 142, 155, 168,  52,  65,  78,  91, 104, 130, 156, 169,   66,  79,  92, 105, 118, 170,     80,  106, 119, 132, 145, 158, 171,  55,  68,  81,  94, 120, 146, 159, 172,  56,  69,  82,  95, 108, 121, 134, 147, 160);
+

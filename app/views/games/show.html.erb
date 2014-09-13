@@ -71,10 +71,17 @@
 </style>
 
 <table id="game">
-  <% 1.upto(@game.rows) do |row_int| %>
+  <% @plots2D.each do |row| %>
     <tr>
-      <% 1.upto(@game.columns) do |columns_int| %>
-        <td><%= row_int %> <%= columns_int %></td>
+      <% row.each do |plot| %>
+        <td>
+          <%= plot.vertical %>
+          <%= plot.horizontal %>
+          <% if plot.selected_by %>
+            <br />
+            <%= plot.selected_by.username %>
+          <% end %>
+        </td>
       <% end %>
     </tr>
   <% end %>

@@ -12,20 +12,13 @@ class GamesController < ApplicationController
   def show
     @plots = @game.plots.order("vertical asc").order("horizontal asc")
 
-    @plots_2D = []
-    (0..@game.rows).each do |row_int| 
-      @plots_2D << []
-      (0..@game.columns).each do |column_int| 
-        debugger
-        @plots_2D[row_int] << @game.plots.where(horizontal: row_int, vertical: column_int)
-        
+    @plots2D = []
+    @game.rows.times do |j| 
+      @plots2D[j] = []
+      row = @game.plots.where(horizontal: j).order("vertical asc")
+      row.each_index do |i|
+        @plots2D[j] << row[i]
       end
-    end
-    (0..@game.rows).each do |row_int| 
-      puts row_int
-    end
-    [1, 4, 5, 7, 10, 12].each_index do |i|
-      puts i
     end
     # lag en 2D array 
     # [
@@ -101,7 +94,7 @@ class GamesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
       params.require(:game).permit( :columns, :rows, :mode)
-      # :start_by
+      # :started_by
 
       # :mode
       # :winner
