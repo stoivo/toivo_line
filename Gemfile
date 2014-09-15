@@ -36,8 +36,6 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use debugger
-gem 'debugger'
 
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
@@ -45,7 +43,12 @@ gem 'twitter-bootstrap-rails'
 gem 'thin'
 gem 'websocket-rails', git: 'git://github.com/DanKnox/websocket-rails.git'
 
+gem "rmagick"
+gem "carrierwave"
+
 group :development do
+  # Use debugger
+  gem 'debugger'
   gem 'tilt'
   gem 'coffee-rails-source-maps'
 end

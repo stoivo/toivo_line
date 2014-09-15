@@ -22,6 +22,8 @@ class AccessController < ApplicationController
       end
     end
     if @current_user
+      @current_user.first_login ||= DateTime.now
+      @current_user.last_login ||= DateTime.now
       session[:user_id] = @current_user.id
       session[:username] = @current_user.username
       flash[:notice] = "You are now logged in."

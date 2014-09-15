@@ -1,3 +1,13 @@
 // Place all the styles related to the user controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#play_brick_span {
+  margin-left: 5px;
+  border: solid 1px #9A9A9A;
+  width: 200px;
+  height: 300px;
+  display: inline-block;
+  background-color: #FF0000;
+}

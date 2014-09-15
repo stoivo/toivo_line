@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912212804) do
+ActiveRecord::Schema.define(version: 20140913211935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,12 +54,23 @@ ActiveRecord::Schema.define(version: 20140912212804) do
     t.integer  "length_to_win"
   end
 
+  create_table "play_bricks", force: true do |t|
+    t.string   "name"
+    t.integer  "added_by_id"
+    t.boolean  "show_to_all", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image"
+  end
+
+  add_index "play_bricks", ["added_by_id"], name: "index_play_bricks_on_added_by_id", using: :btree
+
   create_table "users", force: true do |t|
-    t.string   "username",        limit: 26
-    t.string   "epost",           limit: 100, default: "", null: false
+    t.string   "username",              limit: 26
+    t.string   "epost",                 limit: 100, default: "", null: false
     t.string   "password_digest"
     t.string   "user_photo"
-    t.integer  "default_brick"
+    t.integer  "default_play_brick_id"
     t.date     "first_login"
     t.date     "last_login"
     t.datetime "created_at"

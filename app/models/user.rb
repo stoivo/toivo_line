@@ -2,14 +2,16 @@ class User < ActiveRecord::Base
 
   has_many :games
   has_many :game_plots
+  has_one :default_play_brick, :class_name => "PlayBrick", :foreign_key => "id", primary_key: "default_play_brick_id"
+  accepts_nested_attributes_for :default_play_brick, :allow_destroy => true
+
+  has_many :added_play_bricks, :class_name => "PlayBrick", :foreign_key => "added_by_id"
 
   has_secure_password
 
   EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
   FORBIDDEN_USERNAMES = ['littlebopeep','humptydumpty','marymary']
 
-
-  # shortcut validations, aka "sexy validations"
   validates :username, :length => { :within => 3..26 },
                        :uniqueness => true
   validates :epost, :presence => true,

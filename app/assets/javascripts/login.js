@@ -50,5 +50,7 @@ $( document ).ready(function() {
   $("#confirm_password").change(function() { checkPasswordMatch() })
   $("#user_epost").change(function() { checkEpost() })
   $("#user_username").change(function() { checkUsername() })
+  checkEpost();
+  checkUsername();
 });
 
