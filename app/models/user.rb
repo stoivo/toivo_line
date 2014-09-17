@@ -2,10 +2,12 @@ class User < ActiveRecord::Base
 
   has_many :games
   has_many :game_plots
+  
   has_one :default_play_brick, :class_name => "PlayBrick", :foreign_key => "id", primary_key: "default_play_brick_id"
-  accepts_nested_attributes_for :default_play_brick, :allow_destroy => true
+  # accepts_nested_attributes_for :default_play_brick, :allow_destroy => true
+  has_many :added_play_bricks, :class_name => "PlayBrick", :foreign_key => "added_by_id", :dependent => :destroy
+  accepts_nested_attributes_for :added_play_bricks, :allow_destroy => true
 
-  has_many :added_play_bricks, :class_name => "PlayBrick", :foreign_key => "added_by_id"
 
   has_secure_password
 

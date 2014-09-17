@@ -18,4 +18,22 @@ class Game < ActiveRecord::Base
     end
   end
 
+  def check_for_winner list
+    seleced_hash = {}
+    list.each do |plot|
+      sele_by = plot.selected_by
+      # return nil unless plot.class.to_s == "GamePlot"
+      seleced_hash[sele_by.id] = 0 if seleced_hash[sele_by.id].nil?
+      seleced_hash.map do |user_id, v| 
+        # puts "userEY #{user}"
+        # puts "VALUE #{v}"
+        if user_id == sele_by.id
+          seleced_hash[user_id] += 1
+        else
+          seleced_hash[user_id] = 0
+        end
+      puts seleced_hash.inspect
+      end
+    end
+  end
 end

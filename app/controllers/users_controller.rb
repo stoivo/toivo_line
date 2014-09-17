@@ -34,7 +34,14 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    debugger
+    if user_params.has_key? :play_bricks
+      p = PlayBrick.create name: user_params["play_bricks"][:image].original_filename,
+                           show_to_all: false,
+                           image: user_params["play_bricks"][:image]
+    end
+    user_params.merge({default_play_brick_id: p.id})
+    @user = User.new(user_params.reject{ |k,v| k == "play_bricks" })
 
     respond_to do |format|
       if @user.save
@@ -50,6 +57,15 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    debugger
+    if user_params.has_key? :play_bricks
+      p = PlayBrick.create name: user_params["play_bricks"][:image].original_filename,
+                           show_to_all: false,
+                           image: user_params["play_bricks"][:image]
+    end
+    user_params.merge({default_play_brick_id: p.id})
+    @user = User.new(user_params.reject{ |k,v| k == "play_bricks" })
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -78,7 +94,8 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :epost, :password, :default_play_brick_id, :play_bricks)
+    debugger
+    params.require(:user).permit(:username, :epost, :password, :default_play_brick_id, play_bricks: [:_destroy, :image ])
   end
 end
 

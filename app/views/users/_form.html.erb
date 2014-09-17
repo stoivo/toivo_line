@@ -22,6 +22,9 @@
   </div>
 <% end %>
 
+
+
+
 <%= form_for @user, :html => {:multipart => true} do |f| %>
   <div class="field">
     <%= f.label :username %><br>
@@ -37,15 +40,22 @@
       <%= render "already_existing_brick_field", :f => f ,:brick => brick %>
     <% end %>
       
-    <br />
-    <p>Only for you : </p>
-    <% @added_by_user.each do |brick|%>
-      <%= render "already_existing_brick_field", :f => f ,:brick => brick %>
-    <% end %>
+      <br />
 
-    <%= f.fields_for :play_bricks do |builder| %>
-      <%= render "new_play_bricks_fields", :f => builder %>
-    <% end %>
+
+
+
+      <p>Press here to add more forms</p>
+      <p>Only for you : </p>
+      <%= @user.added_play_bricks.inspect %>
+      <% f.fields_for :added_play_bricks do |builder| %>
+        <p>Simonsimosnimsonismon
+          <%= render "new_play_bricks_fields", :p => builder, :f => f%>
+        </p>
+      <% end %>
+
+
+
   </div>
 
   <div class="field">

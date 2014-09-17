@@ -1,12 +1,13 @@
 <span id="play_brick_span">
   <%= f.radio_button  :default_play_brick_id, :new, :name => "default_play_brick_id" %>
-  <%= f.label "Or add you own brick" %>
+  <%= p.label "add your own brick" %>
   <p>
-    <%= f.check_box :_destroy %>
-    <%= f.label "Destroy this Image" %>
+    <%= p.check_box :_destroy %>
+    <%= p.label "Destroy this Image" %>
   </p>
   <p>
-    <%= f.file_field :image , :id => "uploader"%>
+    <%= p.label "name" %>
+    <%= p.text_field :name %>
+    <%= p.file_field :image , :id => "uploader"%>
   </p>
-
 </span>
