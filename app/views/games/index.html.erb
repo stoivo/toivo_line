@@ -4,8 +4,8 @@
   <thead>
     <tr>
       <th>Start by</th>
-      <th>Weight</th>
-      <th>Height</th>
+      <th>Columns</th>
+      <th>Rows</th>
       <th>Winner</th>
       <th>Losser</th>
       <th>Turn</th>
@@ -23,8 +23,8 @@
     <% @games.each do |game| %>
       <tr>
         <td><%= game.start_by %></td>
-        <td><%= game.weight %></td>
-        <td><%= game.height %></td>
+        <td><%= game.columns %></td>
+        <td><%= game.rows %></td>
         <td><%= game.winner %></td>
         <td><%= game.losser %></td>
         <td><%= game.turn %></td>

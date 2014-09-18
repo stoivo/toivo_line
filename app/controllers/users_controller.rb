@@ -34,6 +34,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    # Wait to continu on nested form
     debugger
     if user_params.has_key? :play_bricks
       p = PlayBrick.create name: user_params["play_bricks"][:image].original_filename,
@@ -57,6 +58,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    # Wait to continu on nested form
     debugger
     if user_params.has_key? :play_bricks
       p = PlayBrick.create name: user_params["play_bricks"][:image].original_filename,
@@ -94,7 +96,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    debugger
     params.require(:user).permit(:username, :epost, :password, :default_play_brick_id, play_bricks: [:_destroy, :image ])
   end
 end

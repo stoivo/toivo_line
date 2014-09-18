@@ -74,12 +74,16 @@
   <% @plots2D.each do |row| %>
     <tr>
       <% row.each do |plot| %>
-        <td>
-          <%= plot.vertical %>
-          <%= plot.horizontal %>
+        <td style="width:100px; height:100px" >
+          <p>ID:<%= plot.id %></p>
+          <p>
+            <%= plot.vertical %>
+            <%= plot.horizontal %>
+          </p>
           <% if plot.selected_by %>
-            <br />
-            <%= plot.selected_by.username %>
+            <p>
+              <%= plot.selected_by.username %>
+            </p>
           <% end %>
         </td>
       <% end %>
