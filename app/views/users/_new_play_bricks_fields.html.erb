@@ -1,5 +1,5 @@
 <span id="play_brick_span">
-  <%= f.radio_button  :default_play_brick_id, :new, :name => "default_play_brick_id" %>
+  <%= form.radio_button :default_play_brick_id, :new, :name => "default_play_brick_id" %>
   <%= p.label "add your own brick" %>
   <p>
     <%= p.check_box :_destroy %>
@@ -9,5 +9,8 @@
     <%= p.label "name" %>
     <%= p.text_field :name %>
     <%= p.file_field :image , :id => "uploader"%>
+  </p>
+  <p>
+    <%= p.link_to_remove "Remove this" %>
   </p>
 </span>

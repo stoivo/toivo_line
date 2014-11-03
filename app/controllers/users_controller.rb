@@ -1,20 +1,19 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /users
-  # GET /users.json
   def index
     @users = User.all
+    @javascript_extrafiles << "nested_form"
   end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
+    @show_to_all_bricks = PlayBrick.where(show_to_all: true)
   end
 
   # GET /users/new
   def new
     @javascript_extrafiles << "login"
+    @javascript_extrafiles << "nested_form"
     @user = User.new
     @show_to_all_bricks = PlayBrick.where(show_to_all: true)
   end
@@ -22,6 +21,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @javascript_extrafiles << "login"
+    @javascript_extrafiles << "nested_form"
     
     # @user = current_user
     @show_to_all_bricks = PlayBrick.where(show_to_all: true)
@@ -35,14 +35,8 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     # Wait to continu on nested form
-    debugger
-    if user_params.has_key? :play_bricks
-      p = PlayBrick.create name: user_params["play_bricks"][:image].original_filename,
-                           show_to_all: false,
-                           image: user_params["play_bricks"][:image]
-    end
-    user_params.merge({default_play_brick_id: p.id})
-    @user = User.new(user_params.reject{ |k,v| k == "play_bricks" })
+    
+    @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
@@ -59,17 +53,9 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     # Wait to continu on nested form
-    debugger
-    if user_params.has_key? :play_bricks
-      p = PlayBrick.create name: user_params["play_bricks"][:image].original_filename,
-                           show_to_all: false,
-                           image: user_params["play_bricks"][:image]
-    end
-    user_params.merge({default_play_brick_id: p.id})
-    @user = User.new(user_params.reject{ |k,v| k == "play_bricks" })
 
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update_attributes(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -96,7 +82,11 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :epost, :password, :default_play_brick_id, play_bricks: [:_destroy, :image ])
+    params.require(:user).permit(
+      :id, :username, :epost, :password, :default_play_brick_id,
+      added_play_bricks_attributes: [:id, :name, :_destroy, :image ])
+
+    # params.require(:user).permit(:username, :epost, :password, :default_play_brick_id, play_bricks: [:_destroy, :image ])
   end
 end
 

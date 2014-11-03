@@ -61,12 +61,52 @@ class Game < ActiveRecord::Base
     return nil
   end
 
+  def check_back_slash
+    # vertical = columns
+    # horizontal = rows
+
+    columns.times do |c|
+      list=[]
+
+      [columns,rows].min.times do |j|
+        # list = plots.where(vertical: j).order("horizontal asc")
+        list << plots.where(vertical: c+j).where(horizontal: j).first
+        user_with_row = check_list_for_winner list
+        # puts "user_with_row #{user_with_row.inspect}"
+        if user_with_row
+          return user_with_row
+        end
+      end
+      # puts "=================="
+    end
+
+    rows.times do |r|
+      list=[]
+      [columns,rows].min.times do |j|
+        # list = plots.where(vertical: j).order("horizontal asc")
+        list << plots.where(vertical: j).where(horizontal: r+j).first
+
+        user_with_row = check_list_for_winner list
+        # puts "user_with_row #{user_with_row.inspect}"
+        if user_with_row
+          return user_with_row
+        end
+      end
+      # puts "inspecting: #{list.inspect}"
+    end
+    return nil
+  end
+
   def check_list_for_winner list
+    # puts "===============++++++++++========================"
+    # puts "elements #{list.inspect}"
+    # puts "class of list in ewinner :#{list.class}"
+    # puts "size of list in ewinner :#{list.size}"
     seleced_hash = {}
     list.each do |plot|
       return nil unless plot.class.to_s == "GamePlot"
       sele_by = plot.selected_by
-      # puts "=================================="
+      # puts "===============++++++++++========================"
       
       # puts "#{caller(0)[0][55..-1]}:plot id #{plot.id}"
       # puts "#{caller(0)[0][55..-1]}:selected_by #{sele_by.inspect}"
@@ -89,7 +129,7 @@ class Game < ActiveRecord::Base
           seleced_hash[user_id] = 0
         end
       end
-      puts "#{caller(0)[0][55..-1]}:seleced_hash after #{seleced_hash}"
+      # puts "#{caller(0)[0][55..-1]}:seleced_hash after #{seleced_hash}"
       # puts seleced_hash.inspect
     end
     return nil
